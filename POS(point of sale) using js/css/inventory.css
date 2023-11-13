@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body{
+    background: rgb(217,217,255);
+    background: radial-gradient(circle, rgba(217,217,255,1) 0%, rgba(255,255,255,1) 100%);
+    
+    -webkit-user-select: none; /* Safari */
+     -moz-user-select: none; /* Firefox */
+     -ms-user-select: none; /* IE10+/Edge */
+     user-select: none;
+     
+}
+body::-webkit-scrollbar {
+    width:14px;
+    }
+
+    body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: rgb(2, 35, 78);
+    border-radius: 10px;
+  }
+  
+  body::-webkit-scrollbar-thumb:hover {
+    background-color: #14388c;
+  }
+.head{
+        position: fixed;
+        width:100%;
+        font-size: 40px;
+        font-weight: bolder;
+        color:rgb(255, 255, 255);
+        background-color: rgb(2, 35, 78);
+        padding:10px 0 10px 5px;
+        z-index: 999;
+        
+}
+.productTable{
+    width:100%;
+    overflow: auto;
+    height:fit-content;
+    position:relative;
+    top:80px;
+}
+.table{
+    position:absolute;
+    border-collapse: collapse;
+}
+h3{
+    display: inline-block;
+    margin-left: 500px;
+}
+.fa {
+    text-align: left;
+    display: inline-block;
+    font-size: 40px;
+    border-radius: 50%;
+    padding:4px;
+    text-decoration: none;
+    color:white;
+}
+th{
+    color:rgb(2, 35, 78);
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    width:19%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin-top: 40px;
+    border-bottom: 4px solid rgb(2, 35, 78);
+    border-spacing: 0;
+}
+th:hover{
+    
+    color:white;
+
+}
+td{
+   text-align: center;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   border-bottom: 2px solid rgb(2, 35, 78);
+}
+tr:hover{
+    background-color: rgb(2, 35, 78);
+    color:white;
+    cursor: pointer;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+}

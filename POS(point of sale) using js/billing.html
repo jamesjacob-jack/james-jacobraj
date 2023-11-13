@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://use.fontawesome.com/869dadf76d.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="css/billing.css">
+</head>
+<body>
+  <div id="overlay" style="display:none;"></div>
+  <div class="generatebill" id="generatebill" style="display:none;">
+    
+    <div class="change"><a href="index.html"><i class="fa fa-arrow-left" id="back-icon" aria-hidden="true"></i></a><p id="change_lable">Bill</p><p id="change_amount_lable"></p></div>
+    <div class="last">
+     <div class="gen_total1"><p id="gen_total_lable">Amount:</p><i id="gen_amount_lable"></i></div>
+     <div class="gen_total2"><p id="gst_lable">GST:</p><i id="gstlable"></i></div>
+     <div class="gen_total3"><p id="payable">Payable:</p><i id="payable_lable"></i></div>
+    </div>
+  </div>
+    <div class="bill" id="bill"  >
+        <div class="total"><p id="total_lable">Total:</p><p id="amount_lable"></p></div>
+        
+        <table id="product-details-table">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+    <div class="keyboard" id="keyboard" >
+        <lable class="lable">Item Number</lable><lable class="lable" id="second_lable">Quantity</lable><br>
+        <input type="number" id="item_number" placeholder="Enter Product ID" autocomplete="off">
+        <input type="number" id="quantity" placeholder="1" autocomplete="off">
+        <button id="add">Add</button>
+
+        <div>
+            <button id="language" disabled>Language</button><br>
+            <lable class="lab">Table No</lable><br>
+            <input type="text" class="input" disabled><br>
+            <lable class='lab'>no.of Cover</lable><br>
+            <input type="text" class="input" disabled><br>
+        </div><br>
+        <div class="number_box">
+          <button class="number_btn">1</button>
+          <button class="number_btn">2</button>
+          <button class="number_btn">3</button><br>
+          <button class="number_btn">4</button>
+          <button class="number_btn">5</button>
+          <button class="number_btn">6</button><br>
+          <button class="number_btn">7</button>
+          <button class="number_btn">8</button>
+          <button class="number_btn">9</button><br>
+          <button class="number_btn">0</button>
+          <button class="number_btn">.</button>
+          <button class="number_btn">-</button>
+        </div>
+        <div class="clear">
+          <button id="clear">clear</button><br>
+          <button id="ac">AC</button>  
+        </div>
+    </div>
+    <div class="scro">
+    <button class="up"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+    <div class="scroll">
+      <div class="button-container">
+        
+        <button class="scrollbtn" id="scrobtn1" onClick="displayProducts('vegitable_products', 'packFoods_products', 'pen_products', 'cake_products')">Vegitables</button>
+        <button class="scrollbtn" id="scrobtn2" onClick="displayProducts('packFoods_products', 'vegitable_products', 'pen_products', 'cake_products')">Pack<br> Foods</button>
+        <button class="scrollbtn" id="scrobtn3" onClick="displayProducts('pen_products', 'vegitable_products', 'packFoods_products', 'cake_products')">Pen</button>
+        <button class="scrollbtn" id="scrobtn4" onClick="displayProducts('cake_products', 'vegitable_products', 'packFoods_products', 'pen_products')">Cake</button>
+        <button class="scrollbtn" id="scrobtn5" >Cookies</button>
+        <button class="scrollbtn" id="scrobtn6" >Fruits</button>
+        <button class="scrollbtn" id="scrobtn7" >Bread</button>
+        <button class="scrollbtn" id="scrobtn8" >Chocolates</button>
+        <button class="scrollbtn" id="scrobtn9" >milk</button>
+        <button class="scrollbtn" id="scrobtn10" >Tea</button>
+        <button class="scrollbtn" id="scrobtn11" >Grocery</button>
+        <button class="scrollbtn" id="scrobtn4" >Cake</button>
+      </div>
+    </div>
+    <button class="down"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+    </div>
+    <div class="products">
+        <div class="vegitable_products" id="vegitable_products" style='display:block;'>
+            <table>
+                <tr>
+                  <td class="product-table-column"><p class="price"><img id="product-image1" src="" class="image"  onClick="addToCart('pro11')" alt="Product Image1"><br><i class='image_price' id="image1-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image2" src="" class="image"  onClick="addToCart('pro12')" alt="Product Image2"><br><i class='image_price' id="image2-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image3" src="" class="image"  onClick="addToCart('pro13')"alt="Product Image3"><br><i class='image_price' id="image3-price">Some text</i></p></td>
+                </tr>
+                <tr>
+                  <td class="product-table-column"><p class="price"><img id="product-image4" src="" class="image" onClick="addToCart('pro14')" alt="Product Image4"><br><i class='image_price' id="image4-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image5" src="" class="image" onClick="addToCart('pro15')" alt="Product Image5"><br><i class='image_price' id="image5-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image6" src="" class="image" onClick="addToCart('pro16')" alt="Product Image6"><br><i class='image_price' id="image6-price">Some text</i></p></td>
+                </tr>
+                <tr>
+                  <td class="product-table-column"><p class="price"><img id="product-image7" src="" class="image" onClick="addToCart('pro17')" alt="Product Image7"><br><i class='image_price' id="image7-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image8" src="" class="image" onClick="addToCart('pro18')" alt="Product Image8"><br><i class='image_price' id="image8-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image9" src="" class="image" onClick="addToCart('pro19')" alt="Product Image9"><br><i class='image_price' id="image9-price">Some text</i></p></td>
+                </tr>
+                <tr>
+                  <td class="product-table-column"><p class="price"><img id="product-image10" src="" class="image" onClick="addToCart('pro110')" alt="Product Image10"><br><i class='image_price' id="image10-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image11" src="" class="image" onClick="addToCart('pro111')" alt="Product Image11"><br><i class='image_price' id="image11-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image12" src="" class="image" onClick="addToCart('pro112')" alt="Product Image12"><br><i class='image_price' id="image12-price">Some text</i></p></td>
+                </tr>
+            </table>
+
+   
+        </div>
+        <div class="packFoods_products" id="packFoods_products" style='display:none;'>
+            <table>
+                <tr>
+                  <td class="product-table-column"><p class="price"><img id="product-image13" src="" class="image" onClick="addToCart('pro21')" alt="Product Image13"><br><i class='image_price' id="image13-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image14" src="" class="image" onClick="addToCart('pro22')" alt="Product Image14"><br><i class='image_price' id="image14-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image15" src="" class="image" onClick="addToCart('pro23')" alt="Product Image15"><br><i class='image_price' id="image15-price">Some text</i></p></td>
+                </tr>
+                <tr>
+                  <td class="product-table-column"><p class="price"><img id="product-image16" src="" class="image" onClick="addToCart('pro24')" alt="Product Image16"><br><i class='image_price' id="image16-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image17" src="" class="image" onClick="addToCart('pro25')" alt="Product Image17"><br><i class='image_price' id="image17-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image18" src="" class="image" onClick="addToCart('pro26')" alt="Product Image18"><br><i class='image_price' id="image18-price">Some text</i></p></td>
+                </tr>
+                <tr>
+                  <td class="product-table-column"><p class="price"><img id="product-image19" src="" class="image" onClick="addToCart('pro27')" alt="Product Image19"><br><i class='image_price' id="image19-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image20" src="" class="image" onClick="addToCart('pro28')" alt="Product Image20"><br><i class='image_price' id="image20-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image21" src="" class="image" onClick="addToCart('pro29')" alt="Product image21"><br><i class='image_price' id="image21-price">Some text</i></p></td>
+                </tr>
+                <tr>
+                  <td class="product-table-column"><p class="price"><img id="product-image22" src="" class="image" onClick="addToCart('pro210')" alt="Product Image22"><br><i class='image_price' id="image22-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image23" src="" class="image" onClick="addToCart('pro211')" alt="Product Image23"><br><i class='image_price' id="image23-price">Some text</i></p></td>
+                  <td class="product-table-column"><p class="price"><img id="product-image24" src="" class="image" onClick="addToCart('pro212')" alt="Product Image24"><br><i class='image_price' id="image24-price">Some text</i></p></td>
+                </tr>
+            </table>
+        </div>
+        <div class="pen_products" id="pen_products" style='display:none;'>
+          <table>
+            <tr>
+              <td class="product-table-column"><p class="price"><img id="product-image25" src="" class="image" onClick="addToCart('pro31')" alt="Product Image13"><br><i class='image_price' id="image25-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image26" src="" class="image" onClick="addToCart('pro32')" alt="Product Image14"><br><i class='image_price' id="image26-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image27" src="" class="image" onClick="addToCart('pro33')" alt="Product Image15"><br><i class='image_price' id="image27-price">Some text</i></p></td>
+            </tr>
+            <tr>
+              <td class="product-table-column"><p class="price"><img id="product-image28" src="" class="image" onClick="addToCart('pro34')" alt="Product Image16"><br><i class='image_price' id="image28-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image29" src="" class="image" onClick="addToCart('pro35')" alt="Product Image17"><br><i class='image_price' id="image29-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image30" src="" class="image" onClick="addToCart('pro36')" alt="Product Image18"><br><i class='image_price' id="image30-price">Some text</i></p></td>
+            </tr>
+            <tr>
+              <td class="product-table-column"><p class="price"><img id="product-image31" src="" class="image" onClick="addToCart('pro37')" alt="Product Image19"><br><i class='image_price' id="image31-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image32" src="" class="image" onClick="addToCart('pro38')" alt="Product Image20"><br><i class='image_price' id="image32-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image33" src="" class="image" onClick="addToCart('pro39')" alt="Product image21"><br><i class='image_price' id="image33-price">Some text</i></p></td>
+            </tr>
+            <tr>
+              <td class="product-table-column"><p class="price"><img id="product-image34" src="" class="image" onClick="addToCart('pro310')" alt="Product Image22"><br><i class='image_price' id="image34-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image35" src="" class="image" onClick="addToCart('pro311')" alt="Product Image23"><br><i class='image_price' id="image35-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image36" src="" class="image" onClick="addToCart('pro312')" alt="Product Image24"><br><i class='image_price' id="image36-price">Some text</i></p></td>
+            </tr>
+        </table>
+
+        </div>
+        <div class="cake_products" id="cake_products" style='display:none;'>
+          <table>
+            <tr>
+              <td class="product-table-column"><p class="price"><img id="product-image37" src="" class="image" onClick="addToCart('pro41')" alt="Product Image13"><br><i class='image_price' id="image37-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image38" src="" class="image" onClick="addToCart('pro42')" alt="Product Image14"><br><i class='image_price' id="image38-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image39" src="" class="image" onClick="addToCart('pro43')" alt="Product Image15"><br><i class='image_price' id="image39-price">Some text</i></p></td>
+            </tr>
+            <tr>
+              <td class="product-table-column"><p class="price"><img id="product-image40" src="" class="image" onClick="addToCart('pro44')" alt="Product Image16"><br><i class='image_price' id="image40-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image41" src="" class="image" onClick="addToCart('pro45')" alt="Product Image17"><br><i class='image_price' id="image41-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image42" src="" class="image" onClick="addToCart('pro46')" alt="Product Image18"><br><i class='image_price' id="image42-price">Some text</i></p></td>
+            </tr>
+            <tr>
+              <td class="product-table-column"><p class="price"><img id="product-image43" src="" class="image" onClick="addToCart('pro47')" alt="Product Image19"><br><i class='image_price' id="image43-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image44" src="" class="image" onClick="addToCart('pro48')" alt="Product Image20"><br><i class='image_price' id="image44-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image45" src="" class="image" onClick="addToCart('pro49')" alt="Product image21"><br><i class='image_price' id="image45-price">Some text</i></p></td>
+            </tr>
+            <tr>
+              <td class="product-table-column"><p class="price"><img id="product-image46" src="" class="image" onClick="addToCart('pro410')" alt="Product Image22"><br><i class='image_price' id="image46-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image47" src="" class="image" onClick="addToCart('pro411')" alt="Product Image23"><br><i class='image_price' id="image47-price">Some text</i></p></td>
+              <td class="product-table-column"><p class="price"><img id="product-image48" src="" class="image" onClick="addToCart('pro412')" alt="Product Image24"><br><i class='image_price' id="image48-price">Some text</i></p></td>
+            </tr>
+        </table>
+        </div>
+        <div class="cookies_products">
+
+        </div>
+        <div class="fruits_products">
+
+        </div>
+        <div class="bread_products">
+
+        </div>
+        <div class="milk_products">
+
+        </div>
+        <div class="tea_products">
+
+        </div>
+        <div class="grocery_products">
+
+        </div>
+    </div>
+    <div class="billbutton">
+        <button id="generate-bill-btn"><i style='margin-right: 20px;' class="fa fa-caret-left" aria-hidden="true" ></i>Bill</button>
+    </div>
+    <script src="js/scroll.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/keyboard.js"></script>
+</body>
+</html>
